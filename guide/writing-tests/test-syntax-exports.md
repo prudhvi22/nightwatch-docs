@@ -46,6 +46,37 @@ You can also include multiple steps in a test as follows:<br><br>
   }
 };</code></pre></div>
 
+### Using ES Modules (ESM)
+If using [ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) in your project, you'll need to write your tests using the below format: 
+
+<div class="sample-test"><i>tests/sampleTest.js</i><pre class="line-numbers" data-language="javascript"><code class="language-javascript">exports default {
+  'Demo test ecosia.org' : function(browser) {
+    browser
+      .url('https://www.ecosia.org/')
+      .waitForElementVisible('body')
+      .assert.titleContains('Ecosia')
+      .assert.visible('input[type=search]')
+      .setValue('input[type=search]', 'nightwatch')
+      .assert.visible('button[type=submit]')
+      .click('button[type=submit]')
+      .assert.containsText('.mainline-results', 'Nightwatch.js')
+      .end();
+  }
+};</code></pre></div>
+
+
+
+You'll also need to use `nightwatch.conf.cjs` config file.
+
+We've put together a complete [Github ESM template repo](https://github.com/nightwatchjs/nightwatch-boilerplate-esm) with several examples which we're periodically updating, including a Github Actions workflow for you to get started with.
+
+
+
+<div style="text-align: center; max-width: 80%; margin-bottom: 30px; ">
+<a href="https://github.com/nightwatchjs/nightwatch-boilerplate-esm"><img class="github-embed" src="https://opengraph.githubassets.com/default/nightwatchjs/nightwatch-boilerplate-esm" alt="nightwatch-boilerplate-esm on Github" /></a>
+</div>
+
+
 ### Test tags
 
 You can also selectively target tests to run based on tags, such that a test may belong to multiple tags. For example, you might have a login test that belongs to a `login` suite as well as a `sanity` suite.
@@ -81,7 +112,28 @@ Or to skip multiple tags, add each tag you want to skip as comma-separated:
 
 
 ### Recommended content
-- [BDD test syntax](/guide/writing-tests/test-syntax-bdd.html)
-- [Using async/await](/guide/writing-tests/using-es-6-async-await.html)
+- [BDD test syntax](https://nightwatchjs.org/guide/writing-tests/test-syntax-bdd.html)
+- [Using async/await](https://nightwatchjs.org/guide/writing-tests/using-es-6-async-await.html)
 
 [1]:	https://www.ecosia.org/
+
+ <div class="doc-pagination pt-40">
+  <div class="previous">
+    <a href="https://nightwatchjs.org/guide/writing-tests/test-syntax-bdd.html">
+      <span>←</span>
+        <div class="d-flex flex-column">
+          <span class="smallT">Back</span>
+          <span class="bigT">BDD test syntax</span>
+        </div>
+    </a>
+  </div>
+  <div class="next">
+    <a href="https://nightwatchjs.org/guide/writing-tests/using-es-6-async-await.html">
+        <div class="d-flex flex-column">
+          <span class="smallT">Next Page</span>
+          <span class="bigT">Use ES6 async/await</span>
+        </div>
+        <span>→</span>
+    </a>
+  </div>
+</div>

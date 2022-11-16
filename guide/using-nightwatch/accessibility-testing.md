@@ -1,90 +1,83 @@
 ---
 title: Accessibility Testing
 description: Learn about how to do Accessibility testing with Nightwatch
-summary_image: https://nightwatchjs.org/img/banner.png
+summary_image: https://nightwatchjs.org/img/a11y-testing.png
 ---
 
-<div class="page-header"><h2>Accessibility Testing with Nightwatch</h2></div>
+<div class="page-header"><h1>Accessibility (A11y) testing in Nightwatch</h1></div>
 
 ### Overview
-Accessibility testing is a very important part of software development as it ensures that the website is accessible to people with physical disabilities. In a bid to standardize accessibility testing, W3C has released the Web Content Accessibility Guidelines to standardize the experience for the end users with disabilities. 
+In a bid to standardise accessibility testing, W3C has released the [Web Content Accessibility Guidelines (WCAG)][1] to standardise the practice of making websites inclusive to all. Since v2.3, accessibility testing support is now built-in to Nightwatch, using the [`aXe-core`][2] package developed by [Deque Systems][3]. 
+
+Accessibility tests audit the rendered DOM against a set of heuristics based on WCAG rules and other industry-accepted best practices.
+The `aXe` library has over 90 different around accessibility testing and automatically catches up to [57% of WCAG issues][4].
+
+### Run all rules
+
+Use the command [`.axeInject()`][5] to inject the `aXe` library first and the simply run all accessibility tests with [`axeRun()`][6] command as shown below:
+
+<div class="sample-test"><pre data-language="javascript"><code class="language-javascript">describe('accessibility testing', function() {
+
+  it('run all accessibility rules', function(browser) {
+    browser
+      .navigateTo('https://www.w3.org/WAI/demos/bad/after/home.html')
+      .axeInject()
+      .axeRun('body');
+  });
+});</code></pre></div>
+
+### Run selected rules
+
+Alternatively, you can choose to run only a selected tests, by passing the `rule IDs` in an array as shown below:
+
+<div class="sample-test"><pre data-language="javascript"><code class="language-javascript">describe('accessibility testing', function() {
+
+  it('accessibility rule subset', function(browser) {
+    browser
+      .navigateTo('https://www.w3.org/WAI/demos/bad/after/home.html')
+      .axeInject()
+      .axeRun('body', {
+        runOnly: ['color-contrast', 'image-alt'],
+      });
+  });
+});</code></pre></div>
+
+### Disable selected rules
+You can also choose to run all the tests and exclude a few tests.
+
+<div class="sample-test"><pre data-language="javascript"><code class="language-javascript">describe('accessibility testing', function() {
+
+  it('accessibility rule subset', function(browser) {
+    browser
+      .navigateTo('https://www.w3.org/WAI/demos/bad/after/home.html')
+      .axeInject()
+      .axeRun('body', {
+        rules: {
+            'color-contrast': {
+                enabled: false
+            },
+            'region': {
+                enabled: false
+            }
+        }
+    });
+  });
+});</code></pre></div>
 
 
-### E2E accessibility testing
+You can find the complete list of the rule IDs on the [Axe Github page][7] 
 
-Nightwatch now ships with out of the box support for Accessibility testing. This is based off of a plugin developed by `David Mello`. The plugin uses `aXe` at the core. `aXe` has over 90 different around accessibility testing. You can choose to run specific rules or you can run all the tests but exclude a few rules.
-
-#### Running all accessibility tests
-
-Before running accessibility tests, you will have to run the command `.axeInject()`. Post that you can choose to simply run all accessibility tests with `axeRun()` command as shown below.
-
-<pre><code class="language-javascript">
-    'Run everything': function (browser) {
-        browser
-            .url('https://www.nightwatch.org/')
-            .axeInject()
-            .axeRun('body')
-            .end();
-    }
-</code></pre>
-
-#### Running only selected accessibility tests
-
-Alternatively, you can choose to run only a selected tests, by passing the `rule IDs` in an array as shown below. 
-
-<pre><code class="language-javascript">
-    'Run only contrast and alt images': function (browser) {
-        browser
-            .url('https://www.nightwatch.org/')
-            .axeInject()
-            .axeRun('body', {
-                runOnly: ['color-contrast', 'image-alt']
-            })
-            .end();
-    }
-</code></pre>
-
-You can find the complete list of the rule IDs on the [Axe Github page][1] 
-
-#### Running all accessibility tests, excluding some
-
-You can also choose to run all the tests and exclude a few tests 
+### Recommended content
+- [API Reference: axeInject()][8]
+- [API Reference: axeRun()][9]
 
 
-<pre><code class="language-javascript">
-    'Run everything except contrast and region': function (browser) {
-        browser
-            .url('https://www.nightwatch.org/')
-            .axeInject()
-            .axeRun('body', {
-                rules: {
-                    'color-contrast': {
-                        enabled: false
-                    },
-                    'region': {
-                        enabled: false
-                    }
-                }
-            })
-            .end();
-    }
-</code></pre>
-
-You can find the complete list of the rule IDs on the [Axe Github page][1] 
-
-
-### Accessibility testing for components
-
-Accessibility testing for components is very similar to the accessibility testing for E2E. Once you mount the component, you can run the same `Axe Inject` and `Axe Run` commands to run the accessibility tests for components. The components are mounted under `#app` dom element and hence the `Axe Run` command should have `#app` as the argument as shown below
-
-<pre><code class="language-javascript">
-    'Run accessibility tests on components': function (browser) {
-        browser
-            .axeInject()
-            .axeRun('#app')
-            .end();
-    }
-</code></pre>
-
-
-[1]:    https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md
+[1]:	https://www.w3.org/WAI/standards-guidelines/wcag/
+[2]:	https://www.npmjs.com/package/axe-core
+[3]:	https://www.deque.com/
+[4]:	https://www.deque.com/blog/automated-testing-study-identifies-57-percent-of-digital-accessibility-issues/
+[5]:	https://nightwatchjs.org/api/axeInject.html
+[6]:	https://nightwatchjs.org/api/axeRun.html
+[7]:	https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md
+[8]:	https://nightwatchjs.org/api/axeInject.html
+[9]:	https://nightwatchjs.org/api/axeRun.html

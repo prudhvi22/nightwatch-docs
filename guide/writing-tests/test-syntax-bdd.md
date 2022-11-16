@@ -258,10 +258,40 @@ Define tags for this test suite.
   after(browser => browser.end());
 });</code></pre></div>
 
+### Example Github repo
+
+We've put together a complete [Github template repo](https://github.com/nightwatchjs/nightwatch-examples) with several examples which we're periodically updating, including a Github Actions workflow for you to get started with.  
+
+<div style="text-align: center; max-width: 80%; margin-bottom: 30px; ">
+<a href="https://github.com/nightwatchjs/nightwatch-examples"><img class="github-embed" src="https://opengraph.githubassets.com/default/nightwatchjs/nightwatch-examples" alt="nightwatch-examples on Github" /></a>
+</div>
+
 ### Recommended content
-- [Exports test syntax](/guide/writing-tests/test-syntax-exports.html)
-- [Using async/await](/guide/writing-tests/using-es-6-async-await.html)
-- [Finding & interacting with DOM Elements](/guide/writing-tests/finding-interacting-with-dom-elements.html)
+- [Exports test syntax](https://nightwatchjs.org/guide/writing-tests/test-syntax-exports.html)
+- [Using async/await](https://nightwatchjs.org/guide/writing-tests/using-es-6-async-await.html)
+- [Finding & interacting with DOM Elements](https://nightwatchjs.org/guide/writing-tests/finding-interacting-with-dom-elements.html)
 
 [1]:	https://www.ecosia.org/
+
+
+ <div class="doc-pagination pt-40">
+  <div class="previous">
+    <a href="https://nightwatchjs.org/guide/configuration/aws-devicefarm-settings.html">
+      <span>←</span>
+        <div class="d-flex flex-column">
+          <span class="smallT">Back</span>
+          <span class="bigT">Configure AWS Device Farm</span>
+        </div>
+    </a>
+  </div>
+  <div class="next">
+    <a href="https://nightwatchjs.org/guide/writing-tests/test-syntax-exports.html">
+        <div class="d-flex flex-column">
+          <span class="smallT">Next Page</span>
+          <span class="bigT">Export test syntax</span>
+        </div>
+        <span>→</span>
+    </a>
+  </div>
+</div>
 

@@ -48,10 +48,31 @@ Callbacks can still be used as before and if the callback returns a `Promise`, t
 };</code></pre></div>
 
 ### Recommended content
-- [Writing tests > BDD describe test syntax](/guide/writing-tests/test-syntax-bdd.html)
-- [Writing tests > Exports test syntax](/guide/writing-tests/test-syntax-exports.html)
-- [Finding & interacting with DOM Elements](/guide/writing-tests/finding-interacting-with-dom-elements.html)
+- [Writing tests > BDD describe test syntax](https://nightwatchjs.org/guide/writing-tests/test-syntax-bdd.html)
+- [Writing tests > Exports test syntax](https://nightwatchjs.org/guide/writing-tests/test-syntax-exports.html)
+- [Finding & interacting with DOM Elements](https://nightwatchjs.org/guide/writing-tests/finding-interacting-with-dom-elements.html)
 
 
 [8]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 [9]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await
+
+ <div class="doc-pagination pt-40">
+  <div class="previous">
+    <a href="https://nightwatchjs.org/guide/writing-tests/test-syntax-exports.html">
+      <span>←</span>
+        <div class="d-flex flex-column">
+          <span class="smallT">Back</span>
+          <span class="bigT">Exports test syntax</span>
+        </div>
+    </a>
+  </div>
+  <div class="next">
+    <a href="https://nightwatchjs.org/guide/writing-tests/finding-interacting-with-dom-elements.html">
+        <div class="d-flex flex-column">
+          <span class="smallT">Next Page</span>
+          <span class="bigT">Find & interact with DOM elements</span>
+        </div>
+        <span>→</span>
+    </a>
+  </div>
+</div>
